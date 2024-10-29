@@ -35,3 +35,64 @@ def getTreeTraversal(root):
     res.append(tmp)
     
     return res
+
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+class Solution:
+    def preorder(self, root):
+        if root is None:
+            return
+        print(root.value, end=" ")
+        self.preorder(root.left)
+        self.preorder(root.right)
+
+    def inorder(self, root):
+        if root is None:
+            return
+        self.inorder(root.left)
+        print(root.value, end=" ")
+        self.inorder(root.right)
+
+    def postorder(self, root):
+        if root is None:
+            return
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.value, end=" ")
+        
+
+# Test case
+if __name__ == "__main__":
+    # Create a sample binary tree:
+    #       1
+    #      / \
+    #     2   3
+    #    / \
+    #   4   5
+
+    # Create root and nodes
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+
+    # Create Solution instance
+    solution = Solution()
+
+    # Test all traversals
+    print("Preorder traversal:")
+    solution.preorder(root)    # Expected output: 1 2 4 5 3
+    
+    print("\nInorder traversal:")
+    solution.inorder(root)     # Expected output: 4 2 5 1 3
+    
+    print("\nPostorder traversal:")
+    solution.postorder(root)   # Expected output: 4 5 2 3 1
+
+
+
+
